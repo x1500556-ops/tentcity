@@ -35,6 +35,11 @@
   .tag.media { color: #ec4899; background: rgba(236,72,153,.12); }
   .tag.biz { color: #34d399; background: rgba(52,211,153,.12); }
   .tag.tent { color: #fff; background: linear-gradient(90deg,#a855f7,#ec4899); }
+  .tag.vid { color: #fb7185; background: rgba(251,113,133,.12); }
+  .tag.img { color: #f97316; background: rgba(249,115,22,.12); }
+  .tag.write { color: #38bdf8; background: rgba(56,189,248,.12); }
+  .tag.voice { color: #a3e635; background: rgba(163,230,53,.12); }
+  .tag.social { color: #22d3ee; background: rgba(34,211,238,.12); }
   .card a.go { display: block; border: 1px solid #2a3352; color: #cfd6ee; border-radius: 16px; padding: 8px 0; font-size: 12.5px; font-weight: 600; text-align: center; margin-top: 4px; }
   .card a.go:active { border-color: #a855f7; }
   .empty { text-align: center; color: #5f6b8f; padding: 40px 20px; font-size: 14px; display: none; }
@@ -44,7 +49,7 @@
 <body>
 <div class="topbar">
   <div class="logo">SUPERDIRECTORY<small>A TENTCITY PROJECT</small></div>
-  <div class="count" id="count">43 tools</div>
+  <div class="count" id="count">87 tools</div>
 </div>
 <div class="hero">
   <h1>Every free tool <span class="grad">that matters.</span></h1>
@@ -54,11 +59,11 @@
 <div class="chips" id="chips"></div>
 <div class="grid" id="grid"></div>
 <div class="empty" id="empty">Nothing matches. Try a different search.</div>
-<footer>SUPERDIRECTORY — the mall directory.<br>Seeded with 43 verified free tools. Grows with the universe.</footer>
+<footer>SUPERDIRECTORY — the mall directory.<br>Seeded with 87 verified free tools. Grows with the universe.</footer>
 
 <script>
-const CATS = {"all":"All","ai":"🤖 AI Tools","sw":"💿 Free Software","learn":"📚 Learning","media":"🎨 Free Media","biz":"💼 Business","tent":"🏙️ TENTCITY"};
-const TAGS = {"ai":"ai","sw":"sw","learn":"learn","media":"media","biz":"biz","tent":"tent"};
+const CATS = {"all":"All","ai":"🤖 AI Tools","sw":"💿 Free Software","learn":"📚 Learning","media":"🎨 Free Media","biz":"💼 Business","tent":"🏙️ TENTCITY","vid":"🎬 AI Video","img":"🎨 AI Design","write":"✍️ AI Writing","voice":"🔊 AI Voice","social":"📣 Social Content"};
+const TAGS = {"ai":"ai","sw":"sw","learn":"learn","media":"media","biz":"biz","tent":"tent","vid":"vid","img":"img","write":"write","voice":"voice","social":"social"};
 const D = [
 ["ai","🤖","ChatGPT","Free-tier AI chat. Ask it anything.","https://chat.openai.com"],
 ["ai","🤖","Claude","Free-tier AI assistant, strong at writing.","https://claude.ai"],
@@ -102,7 +107,51 @@ const D = [
 ["tent","🤖","Aiden","Offline terminal agent. No internet needed.","stores/aiden.html"],
 ["tent","💰","GPT808 Sales Factory","The AI sales team that never sleeps.","stores/gpt808-sales-factory.html"],
 ["tent","🧱","IMGCODE","Code you tap, not type.","https://github.com/xavierhoolulu13-dotcom/imgcode"],
-["tent","🏭","Hoolulu Factory","The governor. Builds everything.","https://github.com/xavierhoolulu13-dotcom/hoolulu-factory"]
+["tent","🏭","Hoolulu Factory","The governor. Builds everything.","https://github.com/xavierhoolulu13-dotcom/hoolulu-factory"],
+["vid","🎬","Vidnoz","Script → video with AI avatar presenters. Free daily credits.","https://www.vidnoz.com/demo.html"],
+["vid","🎬","Quso.ai","Turns long videos into captioned short clips. 75 credits/mo free.","https://quso.ai/vidyo-ai"],
+["vid","🎬","Fliki","Text-to-video with 300 AI voices. 5 min/mo free.","https://fliki.ai/features/text-to-video"],
+["vid","🎬","Vizard","AI finds viral moments, cuts clips. 60 credits/mo free.","https://vizard.ai/tools/clip-maker"],
+["vid","🎬","Steve.AI","Text-to-video, animated or live-action. Free credits.","https://www.steve.ai/"],
+["vid","🎬","Elai.io","Avatar presenter videos from text. 1 min/mo free, no card.","https://elai.io/pricing/"],
+["vid","🎬","Vidu","Text/image-to-video. 40 credits/mo + off-peak free.","https://www.vidu.com/ai-video-generator"],
+["vid","🎬","Creatify","Video ads from a product URL. 10 credits/mo free.","https://creatify.ai/"],
+["vid","🎬","Colossyan","Avatar training videos. Free starter trial, no card.","https://www.colossyan.com/"],
+["vid","🎬","D-ID","Animates photos into talking avatars. 14-day free trial.","https://www.d-id.com/ai-avatars/"],
+["img","🎨","Ideogram","AI images with readable text. Free weekly credits, commercial use OK.","https://ideogram.ai/pricing/"],
+["img","🎨","Recraft","AI vector/illustration design. 30 daily credits free.","https://www.recraft.ai/ai-image-generator"],
+["img","🎨","Photopea","Photoshop-class editor in the browser. Free, no account.","https://www.photopea.com/"],
+["img","🎨","Kittl","Merch & t-shirt graphics. Free tier for personal use.","https://www.kittl.com/create/t-shirts"],
+["img","🎨","Playground AI","AI image canvas. ~10 free images per 3 hours.","https://playgroundai.com/design/pricing"],
+["img","🎨","Cleanup.pictures","Erase objects from photos. Free unlimited at 720p.","https://cleanup.pictures/docs"],
+["img","🎨","Flair.ai","AI product photoshoots. Free: 5 images + 1 video.","https://flair.ai/?price=free"],
+["img","🎨","Spline","3D design in the browser. Free editor.","https://spline.design/?via=toools"],
+["img","🎨","Krea.ai","Real-time AI image generation. 100 units/day free.","https://www.krea.ai/"],
+["img","🎨","Upscale.media","AI photo upscaler. Free daily image, no watermark.","https://www.upscale.media/"],
+["write","✍️","Rytr","AI writer, 40+ use cases. 10k chars/mo free.","https://rytr.me/"],
+["write","✍️","Lex","AI-native word processor. Free editor, monthly AI checks.","https://lex.page/about"],
+["write","✍️","Typefully","Write & schedule X/LinkedIn/Threads. 15 posts/mo free.","https://typefully.com/"],
+["write","✍️","Simplified","AI writing + design + video + scheduling. Free forever tier.","https://simplified.com/ai-writer"],
+["write","✍️","Hypotenuse AI","Bulk SEO product descriptions. 7-day free trial.","https://www.hypotenuse.ai/tools/product-description-generator"],
+["write","✍️","Writecream","75+ AI tools: articles, ads, outreach. Free forever.","https://www.writecream.com/"],
+["write","✍️","ParagraphAI","AI writing keyboard for your phone. 5 uses/day free.","https://www.paragraphai.com/pricing"],
+["write","✍️","Wordtune","AI rewriting & tone polish. 10 rewrites/day free.","https://www.wordtune.com/plans"],
+["voice","🔊","Murf","Studio AI voiceovers, 200+ voices. 10 min free.","https://murf.ai/pricing"],
+["voice","🔊","Auphonic","Auto audio post-production. 2 hrs/mo free.","https://auphonic.com/"],
+["voice","🔊","TTSMaker","600+ voice TTS. 20k chars/week free, commercial use OK.","https://ttsmaker.com/"],
+["voice","🔊","Mubert","AI royalty-free music. 25 tracks/mo free.","https://mubert.ai/pricing"],
+["voice","🔊","Voicemod","Real-time AI voice changer. Free daily voices.","https://www.voicemod.net/en/voice-changer/"],
+["voice","🔊","NaturalReader","Docs → spoken audio. Free forever tier.","https://www.naturalreaders.com/webapp.html"],
+["voice","🔊","Luvvoice","Simple TTS, 200+ voices. Free monthly chars, MP3 downloads.","https://luvvoice.com/"],
+["voice","🔊","Narakeet","Scripts & slides → narrated video. 20 free conversions.","https://www.narakeet.com/docs/pricing/"],
+["social","📣","Metricool","Scheduling + analytics + competitor tracking. 20 posts/mo free.","https://metricool.com/pricing/"],
+["social","📣","Publer","Social scheduler, 3 accounts. 10 posts/account free.","https://publer.com/plans"],
+["social","📣","Pallyy","Visual scheduler for creators. 15 posts/mo free.","https://pallyy.com/social-media-scheduling"],
+["social","📣","Snappa","Fast social graphics, 6k templates. 3 downloads/mo free.","https://snappa.com/pricing"],
+["social","📣","VistaCreate","Canva-style design + brand kit + scheduling. Generous free tier.","https://create.vista.com/plans/"],
+["social","📣","CoSchedule","Marketing calendar for social + blog. Free tier.","https://coschedule.com/marketing-calendar"],
+["social","📣","Social Champ","Scheduling + inbox + analytics. 3 accounts free.","https://www.socialchamp.com/pricing/"],
+["social","📣","SocialMate.studio","250 posts/mo free, incl. Discord & Telegram.","https://socialmate.studio/"],
 ];
 const chips = document.getElementById('chips'), grid = document.getElementById('grid'), q = document.getElementById('q'), empty = document.getElementById('empty'), count = document.getElementById('count');
 let cat = 'all';
